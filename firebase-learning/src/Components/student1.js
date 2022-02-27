@@ -7,10 +7,11 @@ import {
   deleteDoc,
   query,
   onSnapshot,
-} from "firebase/firestore";
+} from "firebase/firestore"; 
+import {db} from "../firebase-config";
 
 
-export default function student1() {
+export default function Student1() {
 
   const [students, setStudents] = React.useState([]);
   const q = query(collection(db, "student_data"));
@@ -39,7 +40,7 @@ export default function student1() {
     }
   }
 
-  async function handelSubmit() {
+  async function handelAdd() {
     try {
       const docRef = await addDoc(collection(db, "student_data"), {
         name: name.current.value,
@@ -47,6 +48,8 @@ export default function student1() {
         marks: marks.current.value,
       });
       console.log("Document written with ID: ", docRef.id);
+      
+      
     } catch (err) {
       console.log(err);
     }
@@ -67,8 +70,8 @@ export default function student1() {
           <input type="text" placeholder="marks" ref={marks} />
         </p>
         <div>
-          <button onClick={handelSubmit}>Add</button>
-          <button onClick={handelSubmit}>Update</button>
+          <button onClick={handelAdd}>Add</button>
+          <button onClick="" >Update</button>
         </div>
       </div>
       <div>
