@@ -1,0 +1,56 @@
+.c-container {
+  height: 50vh;
+  width: 100%;
+  height: 100%;
+  /* background-color: beige; */
+  border: 1px solid black;
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+}
+.contact-container {
+  border: 1px solid black;
+  height: 70vh;
+  width: 45vw;
+  margin: 20px;
+  padding: 20px;
+  background-color: aliceblue;
+}
+.name-container,
+.email-container,
+.password-container,
+.address-container {
+  /* border: 1px solid black; */
+  margin: 20px 0;
+}
+
+.label,
+.input {
+  margin: 2px 0;
+
+}
+.input {
+  height: 1.8em;
+  width: 200px;
+  outline: none;
+  font-size: 0.9em;
+  padding: 0 5px;
+  border: 1px solid #ccc;
+}
+.input:focus{
+  border: 1px solid skyblue;
+}
+
+.submit-btn {
+  width: 100%;
+  height: 2em;
+  /* margin: 40px */
+  /* border: 1px solid black; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.submit-btn button {
+  height: 100%;
+  width: 10em;
+}
