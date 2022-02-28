@@ -81,7 +81,8 @@ export default function Student1() {
       console.log("Document written with ID: ", docRef.id);
       
     } catch (err) {
-      console.log(err);
+      console.log("Error: ",err);
+
     }
   }
 
