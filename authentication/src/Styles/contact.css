@@ -2,54 +2,105 @@
   height: 50vh;
   width: 100%;
   height: 100%;
-  /* background-color: beige; */
+  background-color: rgba(73, 73, 73, 0.884);
   border: 1px solid black;
-  /* display: flex;
+  display: flex;
   justify-content: center;
-  align-items: center; */
+  align-items: center;
+  font-size: 0.9em;
 }
 .contact-container {
-  border: 1px solid black;
+  /* border: 1px solid black; */
   height: 70vh;
-  width: 50vw;
+  width: 600px;
   margin: 20px;
-  padding: 20px;
-  background-color: aliceblue;
+  padding: 40px;
+  background-color: white;
+  border-radius: 10px;
 }
+
+.name-email-container,
+.mobile-address-container {
+  display: flex;
+  justify-content: space-between;
+  /* border: 1px solid red; */
+}
+
+.name-container,
+.mobile-container {
+  width: 48%;
+  /* border: 1px solid black; */
+}
+.email-container,
+.address-container {
+  width: 48%;
+  /* border: 1px solid black; */
+}
+
 .name-container,
 .email-container,
 .password-container,
-.address-container, .msg-container {
-  border: 1px solid black;
-  margin: 20px 0;
+.address-container,
+.mobile-container,
+.msg-container {
+  /* border: 1px solid black; */
+  margin: 15px 0;
 }
 
 .label,
 .input {
   margin: 2px 0;
 }
-.input {
+.input,
+.msg-box {
   height: 1.8em;
-  width: 200px;
-  outline: none;
+  width: 100%;
+  /* outline: none; */
   font-size: 0.9em;
   padding: 0 5px;
-  border: 1px solid #ccc;
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+  border-bottom: 1px solid #ccc;
+
+  background: none;
+  resize: none;
+  color: gray;
 }
-.input:focus {
-  border: 1px solid skyblue;
+.input:focus,
+.msg-box:focus {
+  outline: none;
+  border-bottom: 1px solid red;
 }
 
-.msg-box{
+.input::placeholder,
+.msg-box::placeholder {
+  color: #ccc;
+}
+
+.msg-box {
   width: 100%;
+  height: 3.5em;
   outline: none;
-  border: 1px solid #ccc;
-  
+  /* border: 1px solid #ccc; */
+  border: none;
+  background: none;
+  resize: none;
+  margin: 5px 0;
+  font-size: 0.9em;
+  padding: 0 5px;
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+  border-bottom: 1px solid #ccc;
+}
+.msg-box:focus {
+  border-bottom: 1px solid red;
 }
 
 .submit-btn {
   width: 100%;
-  height: 2em;
+  height: 2.5em;
   /* margin: 40px */
   /* border: 1px solid black; */
   display: flex;
@@ -58,5 +109,15 @@
 }
 .submit-btn button {
   height: 100%;
-  width: 10em;
+  width: 8em;
+  background-color: rgb(97, 161, 187);
+  border: 1px solid #ccc;
+  border-radius: 50px;
+  color: #fff;
+  font-size: 1em;
+  font-weight: bold;
+  cursor: pointer;
+}
+.submit-btn button:active {
+  background-color: rgb(99, 179, 211);
 }

@@ -1,23 +1,27 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect } from "react";
 import {
   collection,
   addDoc,
   doc,
   getFirestore,
   deleteDoc,
+  updateDoc,
   query,
   onSnapshot,
-} from "firebase/firestore"; 
-import {db} from "../firebase-config";
-
+} from "firebase/firestore";
+import { db } from "../firebase-config";
 
 export default function Student1() {
+  // {
+  //   rollno,name,marks
+  // }
+  const [students, setStudents] = useState([]);
+  const [sid, setSid] = useState("");
 
-  const [students, setStudents] = React.useState([]);
   const q = query(collection(db, "student_data"));
 
   useEffect(() => {
-    const unsubscribe = onSnapshot(q, (querySnapshot) => {
+    const unsubscribe = onSnapshot(q, function (querySnapshot) {
       const s = [];
       querySnapshot.forEach((doc) => {
         s.push(doc);
@@ -33,8 +37,35 @@ export default function Student1() {
   function handleDelete(s) {
     try {
       console.log(s.id);
+      // name.current.value = s.data().name
       const student = doc(db, "student_data", s.id);
       deleteDoc(student);
+    } catch (err) {
+      console.log(err);
+    }
+  }
+  async function handleUpdateFill(s) {
+    try {
+      name.current.value = s.data().name;
+      rollno.current.value = s.data().rollno;
+      marks.current.value = s.data().marks;
+
+      console.log("Data: ", s);
+      setSid(s.id);
+    } catch (err) {
+      console.log(err);
+    }
+  }
+  async function handleUpdate() {
+    try {
+      const student = doc(db, "student_data", sid);
+      const updateDocRef = await updateDoc(student, {
+        name: name.current.value,
+        rollno: rollno.current.value,
+        marks: marks.current.value,
+      });
+      console.log("After update : ", updateDocRef);
+      
     } catch (err) {
       console.log(err);
     }
@@ -48,7 +79,6 @@ export default function Student1() {
         marks: marks.current.value,
       });
       console.log("Document written with ID: ", docRef.id);
-      
       
     } catch (err) {
       console.log(err);
@@ -71,7 +101,7 @@ export default function Student1() {
         </p>
         <div>
           <button onClick={handelAdd}>Add</button>
-          <button onClick="" >Update</button>
+          <button onClick={handleUpdate}>Update</button>
         </div>
       </div>
       <div>
@@ -93,6 +123,15 @@ export default function Student1() {
                   }}
                 >
                   Delete
+                </button>
+              </td>
+              <td>
+                <button
+                  onClick={() => {
+                    handleUpdateFill(ele);
+                  }}
+                >
+                  UpdateFill
                 </button>
               </td>
             </tr>
